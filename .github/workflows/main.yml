@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Setup MsBuild
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Generate Certificate
+        run: powershell.exe -f generate_cert.ps1
+
+      - name: Build Debug
+        run: msbuild.exe /nologo /m /t:Rebuild /p:Configuration=Debug ppl_runner.sln
+
+      - name: Build Release
+        run: msbuild.exe /nologo /m /t:Rebuild /p:Configuration=Release ppl_runner.sln
