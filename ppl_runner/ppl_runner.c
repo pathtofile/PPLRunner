@@ -61,7 +61,6 @@ DWORD install_service()
     wcscpy_s(serviceCMD + serviceCMDLen, MAX_BUF_SIZE - serviceCMDLen, L" service");
 
     // Add PPL option
-    info.dwLaunchProtected = SERVICE_LAUNCH_PROTECTED_ANTIMALWARE_LIGHT;
     hService = CreateService(
         hSCManager,
         SERVICE_NAME,
@@ -91,6 +90,7 @@ DWORD install_service()
     }
 
     // Mark service as protected
+    info.dwLaunchProtected = SERVICE_LAUNCH_PROTECTED_ANTIMALWARE_LIGHT;
     if (ChangeServiceConfig2(hService, SERVICE_CONFIG_LAUNCH_PROTECTED, &info) == FALSE) {
         retval = GetLastError();
         log_message(L"[PPL_RUNNER] install_service: ChangeServiceConfig2 Error: %d\n", retval);
