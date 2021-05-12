@@ -1,8 +1,8 @@
 # PPLRunner
 
-This project is to enable running 'arbitrary`*`' process as an Anti Malware Protected-Process-Light (PPL), for research purposes.
+This project is to enable running 'arbitrary`*`' process as an Anti Malware Protected-Process-Light (PPL), for research purposes. (`*` See the [Restrictions](#restrictions) section for more details)
 
-(`*` See the [Restrictions](#restrictions) section for more details)
+See [this blog I wrote](https://blog.tofile.dev/2020/12/16/elam.html) for more details and the reasoning behind this project.
 
 # Overview
 System protected process is a security model in Windows designed to protect system and anti-virus processes from
