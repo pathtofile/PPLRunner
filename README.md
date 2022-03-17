@@ -86,6 +86,9 @@ As a PPL service, when started ppl_runner will read the registry key, launch the
 also as PPL, then stop and exit. A successful launch will still say `the service failed to run`,
 but if you check the return code with `sc query ppl_runner`, it should be 0, i.e. ERROR_SUCCESS.
 
+The Child process will *not* be visible, however if you can use Debug Outputs and `DBGView.exe` to get
+some form of output (see the `child_example` code).
+
 # Cleanup/Removal
 As the service is also Anti Malware PPL, it can only be stopped and deleted by a similarly high-level
 process. However, we can use PPLRunner to remove itself, simply set the command in the registry key to be:
