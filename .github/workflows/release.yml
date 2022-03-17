@@ -45,6 +45,16 @@ jobs:
           asset_name: ppl_runner.exe
           asset_content_type: application/octet-stream
 
+      - name: Upload Build - ChileExample
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bin/x64/Release/child_example.exe
+          asset_name: child_example.exe
+          asset_content_type: application/octet-stream
+
       - name: Upload Build - ELAMDriver
         uses: actions/upload-release-asset@v1
         env:
